@@ -1,0 +1,20 @@
+<div class="todoItem">
+  <!-- dbclick 如果編輯有值時，就顯示 -->
+  <input
+    type="text"
+    v-model.trim="edit"
+    v-if="edit != null"
+    class="edit"
+    v-focus
+    @keyup.enter="submitHandler"
+    @keyup.esc="cancelHandler"
+    @blur="cancelHandler"
+  />
+
+  <!-- 用template包，少一層dom -->
+  <template v-else>
+    <input type="checkbox" class="toggle" v-model="complete" />
+    <label @dblclick="editHandler">{{ todo.content }}</label>
+    <button class="destroy" @click="destoryHandler">x</button>
+  </template>
+</div>
